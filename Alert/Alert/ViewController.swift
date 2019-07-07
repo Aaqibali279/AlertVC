@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var alert:AlertVC?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,14 +23,23 @@ class ViewController: UIViewController {
     }
     
     @objc func showAlert(sender:UIButton){
-        showAlertVC(title: "Error",message: "Network not available")
+        let actions = [
+            ("CANCEL",nil),
+            ("OK",#selector(okAction))
+            ] as [(String,Selector?)]
+       alert = showAlertVC(title: "Error",message: "Network not available, please connect to wifi and try again", actions: actions)
+    }
+    
+    
+    @objc func okAction(){
+        alert?.removeAlert()
+        print("Okay")
     }
 
 
 }
 
 class DetailVC: UIViewController {
-    
     
     override func loadView() {
         super.loadView()
@@ -39,10 +49,12 @@ class DetailVC: UIViewController {
 }
 
 extension UIViewController{
-    func showAlertVC(title:String?,message:String?) {
+    func showAlertVC(title:String?,message:String?,actions:[(String,Selector?)]) -> AlertVC {
         let alertVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "AlertVC") as! AlertVC
         alertVC.titleString = title
         alertVC.message = message
+        alertVC.actions = actions
+        alertVC.vc = self
         alertVC.modalTransitionStyle = .crossDissolve
         alertVC.modalPresentationStyle = .overCurrentContext
         //        alertVC.preferredContentSize = .init(width: 300, height: 250)
@@ -52,6 +64,7 @@ extension UIViewController{
         //        popUp?.sourceView = sender
         //        popUp?.permittedArrowDirections = .up
         present(alertVC, animated: true)
+        return alertVC
     }
 }
 

@@ -76,42 +76,38 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="mt2-Ia-Vx8"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hlc-kL-UO8">
-                                                <rect key="frame" x="0.0" y="49" width="350" height="122"/>
+                                                <rect key="frame" x="0.0" y="49" width="350" height="171"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lor-Q3-AKg">
-                                                        <rect key="frame" x="16" y="0.0" width="318" height="122"/>
+                                                        <rect key="frame" x="20" y="0.0" width="310" height="117"/>
                                                         <string key="text">The placeholder attribute specifies a short hint that describes the expected value of an input field (e.g. a sample value or a short description of the expected format).</string>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="SoZ-Eh-JsC">
+                                                        <rect key="frame" x="0.0" y="113" width="350" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="zNz-Qf-TLb"/>
+                                                        </constraints>
+                                                    </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="lor-Q3-AKg" secondAttribute="bottom" id="0IR-6q-yCC"/>
-                                                    <constraint firstItem="lor-Q3-AKg" firstAttribute="leading" secondItem="Hlc-kL-UO8" secondAttribute="leading" constant="16" id="IdK-LP-4w8"/>
-                                                    <constraint firstAttribute="trailing" secondItem="lor-Q3-AKg" secondAttribute="trailing" constant="16" id="UEM-4K-0Ff"/>
+                                                    <constraint firstAttribute="trailing" secondItem="SoZ-Eh-JsC" secondAttribute="trailing" id="C67-ep-aEk"/>
+                                                    <constraint firstItem="SoZ-Eh-JsC" firstAttribute="top" secondItem="lor-Q3-AKg" secondAttribute="bottom" constant="4" id="Gd6-hM-2XV"/>
+                                                    <constraint firstItem="SoZ-Eh-JsC" firstAttribute="leading" secondItem="Hlc-kL-UO8" secondAttribute="leading" id="Gzg-jI-FZ7"/>
+                                                    <constraint firstItem="lor-Q3-AKg" firstAttribute="leading" secondItem="Hlc-kL-UO8" secondAttribute="leading" constant="20" id="IdK-LP-4w8"/>
+                                                    <constraint firstAttribute="trailing" secondItem="lor-Q3-AKg" secondAttribute="trailing" constant="20" id="UEM-4K-0Ff"/>
+                                                    <constraint firstAttribute="bottom" secondItem="SoZ-Eh-JsC" secondAttribute="bottom" id="tgv-yC-V3J"/>
                                                     <constraint firstItem="lor-Q3-AKg" firstAttribute="top" secondItem="Hlc-kL-UO8" secondAttribute="top" id="zEu-kZ-qgW"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DeM-tR-rP6">
-                                                <rect key="frame" x="0.0" y="175" width="350" height="45"/>
-                                                <color key="backgroundColor" red="1" green="0.52474682299999997" blue="0.044550450749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="rwk-pT-h4X"/>
-                                                </constraints>
-                                                <state key="normal" title="OK">
-                                                    <color key="titleColor" white="0.94649864439999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="ok" destination="LJr-Ax-lQ6" eventType="touchUpInside" id="r6h-cB-4DO"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -136,6 +132,7 @@
                     </view>
                     <connections>
                         <outlet property="messageLabel" destination="lor-Q3-AKg" id="RGu-Pd-f5t"/>
+                        <outlet property="stackView" destination="SoZ-Eh-JsC" id="pUP-kS-M30"/>
                         <outlet property="titleLabel" destination="s16-Ho-hCY" id="bOO-I0-faH"/>
                     </connections>
                 </viewController>
