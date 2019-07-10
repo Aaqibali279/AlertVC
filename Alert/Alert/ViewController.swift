@@ -8,12 +8,50 @@
 
 import UIKit
 
+extension ViewController:UIPopoverPresentationControllerDelegate{
+    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
+        return true
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
+    }
+}
+
+
+
 class ViewController: UIViewController {
 
     var alert:AlertVC?
+    var array = ["gouhndcouhjnd","gyfebd","fgeei","efguhd","feuhdn","ruhdoln","gouhndcouhjnd","gyfebd","fgeei","efguhd","feuhdn","ruhdoln","gouhndcouhjnd","gyfebd","fgeei","efguhd","feuhdn","ruhdoln"]
+    
+    @IBAction func action(sender:UIButton){
+        
+        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopUpVC") as! PopUpVC
+        
+        var height = 50 * 10
+        
+        if array.count < 10{
+            height = 50 * array.count
+        }
+        
+        vc.array = array
+        vc.modalPresentationStyle = .popover
+        vc.preferredContentSize = .init(width: 250, height: height)
+        let popover = vc.popoverPresentationController!
+        popover.delegate = self
+        popover.permittedArrowDirections = .down
+        popover.sourceView = sender
+        popover.sourceRect = sender.bounds
+        
+        present(vc, animated: true)
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .red
         let btn = UIButton(frame: .init(x: 0, y: 0, width: 60, height: 40))
         btn.setTitle("Show", for: .normal)
         btn.setTitleColor(UIColor.blue, for: .normal)
@@ -38,6 +76,8 @@ class ViewController: UIViewController {
 
 
 }
+
+
 
 class DetailVC: UIViewController {
     
